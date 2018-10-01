@@ -18,8 +18,15 @@ class AdminUserSeeder extends Seeder
             factory(App\User::class)->create([
                     "name" => env('ADMIN_USER', "Admin"),
                     "email" => env('ADMIN_EMAIL', "luisbrian.lbcp@gmail.com"),
-                    "password" => bcrypt(env('ADMIN_PWD', '123456'))]);
+                    "password" => bcrypt(env('ADMIN_PWD', '123456'))])->each(function($user){
+                            $user->persona()->save(factory(App\Persona::class)->make());
+                    });
+
         } catch (\Illuminate\Database\QueryException $exception) {
         }
+
+        factory(App\User::class,20)->create()
+            ->each(function($user){
+        });
     }
 }
