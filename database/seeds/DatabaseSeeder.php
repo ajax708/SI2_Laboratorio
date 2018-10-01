@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
          $this->call(MedicoSeeder::class);
          $this->call(EmpleadoSeeder::class);
          $this->call(EstablecimientoSeeder::class);
+         $this->call(AseguradoraSeguroSeeder::class);
     }
 }
