@@ -17,8 +17,8 @@ class CreateAreaEmpleadoTable extends Migration
             $table->increments('id');
             $table->integer('area_id')->unsigned();
             $table->integer('empleado_id')->unsigned();
-            $table->datetime('fecha_inicio');
-            $table->datetime('fecha_fin');
+            $table->datetime('fecha_inicio')->nullable();
+            $table->datetime('fecha_fin')->nullable();
             $table->timestamps();
         });
     }

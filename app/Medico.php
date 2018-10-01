@@ -11,4 +11,8 @@ class Medico extends Model
     {
         return $this->belongsTo('App\Persona','id');
     }
+    public function establecimientos()
+    {
+        return $this->belongsToMany('App\Establecimiento');
+    }
 }
