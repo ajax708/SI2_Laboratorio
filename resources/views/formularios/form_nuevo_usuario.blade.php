@@ -1,3 +1,5 @@
+
+@role('admin')
 <section class="content" >
 
  <div class="col-md-12">
@@ -97,3 +99,6 @@
                     </div>
 </section>
 
+@else
+    </br><div class="rechazado"><label style='color:#C22612'>No tiene Permisos para acceder a esta sección</label></div>
+@endrole

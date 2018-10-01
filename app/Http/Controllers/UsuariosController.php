@@ -38,6 +38,7 @@ public function form_nuevo_permiso(){
 public function listado_usuarios(){
     //presenta un listado de usuarios paginados de 100 en 100
 	$usuarios=User::paginate(100);
+  
 	return view("listados.listado_usuarios")->with("usuarios",$usuarios);
 }
 

@@ -52,7 +52,7 @@ return [
     'seecode'                 => 'Ver código en',
     'online'                  => 'En Línea',
     'home'                    => 'Inicio',
-    'header'                  => 'FUNCIONES',
+    'header'                  => 'ENCABEZAMIENTO',
     'anotherlink'             => 'Otro enlace',
     'multilevel'              => 'Multinivel',
     'linklevel2'              => 'Enlace en el Nivel 2',
