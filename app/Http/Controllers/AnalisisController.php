@@ -82,4 +82,12 @@ class AnalisisController extends Controller
     {
         //
     }
+
+    //METODOS
+    public function listado_analisis(){
+    //presenta un listado de usuarios paginados de 100 en 100
+    $analisis=Analisis::paginate(100);
+  
+    return view("listados.listado_analisis")->with("analisis",$analisis);
+}  
 }
