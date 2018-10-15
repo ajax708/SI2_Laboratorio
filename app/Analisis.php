@@ -15,4 +15,7 @@ class Analisis extends Model
      public function area(){
     	return $this->belongsTo('App\Area');
     }
+    public function lista_precio(){
+    	return $this->belongsToMany('App\ListaPrecio', 'lista_precio_analisis', 'analisis_id', 'listaprecio_id')->withTimestamps()->withPivot('valor');
+    }
 }
