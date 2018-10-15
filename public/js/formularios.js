@@ -57,7 +57,29 @@ function cargar_formulario(arg){
    }) ;
 
 }
+function cargar_formulario_analisis(arg){
+   var urlraiz=$("#url_raiz_proyecto").val();
+   $("#capa_modal").show();
+   $("#capa_formularios").show();
+   var screenTop = $(document).scrollTop();
+   $("#capa_formularios").css('top', screenTop);
+   $("#capa_formularios").html($("#cargador_empresa").html());
+   if(arg==1){ var miurl=urlraiz+"/form_nuevo_analisis"; }
+   if(arg==2){ var miurl=urlraiz+"/form_nueva_area"; }
+   if(arg==3){ var miurl=urlraiz+"/form_nueva_clinica"; }
 
+    $.ajax({
+    url: miurl
+    }).done( function(resul) 
+    {
+     $("#capa_formularios").html(resul);
+   
+    }).fail( function() 
+   {
+    $("#capa_formularios").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
+   }) ;
+
+}
 
 
 $(document).on("submit",".formentrada",function(e){
@@ -73,6 +95,8 @@ $(document).on("submit",".formentrada",function(e){
   if(quien=="f_borrar_usuario"){  var varurl=$(this).attr("action");  var div_resul="capa_formularios";  }
   if(quien=="f_asignar_permiso"){  var varurl=$(this).attr("action");  var div_resul="capa_formularios";  }
   
+  if(quien=="f_crear_analisis"){  var varurl=$(this).attr("action");  var div_resul="capa_formularios";  }
+
   $("#"+div_resul+"").html( $("#cargador_empresa").html());
   
   $.ajax({

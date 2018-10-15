@@ -1,5 +1,4 @@
-
- @role('admin')
+@role('admin')
 <section class="content" >
 
  <div class="col-md-12">
@@ -7,14 +6,14 @@
   <div class="box box-primary  box-gris">
  
     <div class="box-header with-border my-box-header">
-      <h3 class="box-title"><strong>Nuevo Usuario</strong></h3>
+      <h3 class="box-title"><strong>Nuevo Analisis</strong></h3>
     </div><!-- /.box-header -->
       <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
       <hr style="border-color:white;" />
  
     <div class="box-body">
               
-      <form   action="{{ url('crear_usuario') }}"  method="post" id="f_crear_usuario" class="formentrada" >
+      <form   action="{{ url('crear_analisis') }}"  method="post" id="f_crear_analisis" class="formentrada" >
 				<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
 
           <div class="col-md-6">
@@ -86,7 +85,7 @@
 
 
                     <div class="box-footer col-xs-12 box-gris ">
-                                        <button type="submit" class="btn btn-primary">Crear Nuevo Usuario</button>
+                                        <button type="submit" class="btn btn-primary">Crear Nuevo Analisis</button>
                     </div>
 
 
