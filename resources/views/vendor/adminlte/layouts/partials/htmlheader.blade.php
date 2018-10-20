@@ -23,6 +23,17 @@
     <link rel="stylesheet" href="{{url('/font-awesome/css/font-awesome.min.css')}}"> <!--Iconos--> 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500" >
 
+    <!-- Theme style -->
+    <link href="{{ asset('/css/AdminLTE.css') }}" rel="stylesheet" type="text/css" />
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
+    -->
+    <link href="{{ asset('/css/skins/skin-blue.css') }}" rel="stylesheet" type="text/css" />
+    <!-- iCheck -->
+    
+    <link href="{{ asset('/css/formularios.css') }}" rel="stylesheet" type="text/css" />
+
     <!--//FIN -->
     <script>
         //See https://laracasts.com/discuss/channels/vue/use-trans-in-vuejs
@@ -39,5 +50,6 @@
         @endphp
     </script>
     <script src="{{url('/js/jquery.min.js')}}"></script>
+    <script src="{{asset('/js/formularios.js') }}"></script>
     
 </head>

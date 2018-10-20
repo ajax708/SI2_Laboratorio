@@ -31,6 +31,24 @@ desired effect
 -->
 <body class="skin-blue sidebar-mini">
 <div id="app" v-cloak>
+
+
+        <div style="display: none;" id="cargador_empresa" align="center">
+            <br>
+             <label style="color:#FFF; background-color:#ABB6BA; text-align:center">&nbsp;&nbsp;&nbsp;Espere... &nbsp;&nbsp;&nbsp;</label>
+
+             <img src="{{ url('/img/cargando.gif') }}" align="middle" alt="cargador"> &nbsp;<label style="color:#ABB6BA">Realizando tarea solicitada ...</label>
+
+              <br>
+             <hr style="color:#003" width="50%">
+             <br>
+        </div>
+        <input type="hidden"  id="url_raiz_proyecto" value="{{ url("/") }}" />
+
+    <div id="capa_modal" class="div_modal" style="display: none;"></div>
+    <div id="capa_formularios" class="div_contenido" style="display: none;"></div>
+
+
     <div class="wrapper">
 
     @include('adminlte::layouts.partials.mainheader')

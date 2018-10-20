@@ -62,9 +62,9 @@ function cargar_formulario(arg){
 
 $(document).on("submit",".formentrada",function(e){
   e.preventDefault();
-  var quien=$(this).attr("id");
-  var formu=$(this);
-  var varurl="";
+  var quien=$(this).attr("id");//recibe e el nombre del formulario
+  var formu=$(this);//recibe los datos del formulario
+  var varurl="";//se guarda la ruta a la cual se enviaran los datos
   if(quien=="f_crear_usuario"){  var varurl=$(this).attr("action");  var div_resul="capa_formularios";  }
   if(quien=="f_crear_rol"){  var varurl=$(this).attr("action");  var div_resul="capa_formularios";  }
   if(quien=="f_crear_permiso"){  var varurl=$(this).attr("action");  var div_resul="capa_formularios";  }
@@ -73,6 +73,9 @@ $(document).on("submit",".formentrada",function(e){
   if(quien=="f_borrar_usuario"){  var varurl=$(this).attr("action");  var div_resul="capa_formularios";  }
   if(quien=="f_asignar_permiso"){  var varurl=$(this).attr("action");  var div_resul="capa_formularios";  }
   
+  if(quien=="f_crear_analisis"){  var varurl=$(this).attr("action");  var div_resul="capa_formularios";  }
+  if(quien=="f_editar_analisis"){  var varurl=$(this).attr("action");  var div_resul="capa_formularios";  }
+
   $("#"+div_resul+"").html( $("#cargador_empresa").html());
   
   $.ajax({
@@ -214,4 +217,57 @@ function borrar_rol(idrol){
 
 
 
+}
+//METODOS IMPLEMENTADOS
+  //ANALISIS
+  function cargar_formulario_analisis(arg){
+   var urlraiz=$("#url_raiz_proyecto").val();
+   $("#capa_modal").show();
+   $("#capa_formularios").show();
+   var screenTop = $(document).scrollTop();
+   $("#capa_formularios").css('top', screenTop);
+   $("#capa_formularios").html($("#cargador_empresa").html());
+   // if(arg==1){ var miurl=urlraiz+"/form_nuevo_analisis"; }
+   // if(arg==2){ var miurl=urlraiz+"/form_nueva_area"; }
+   // if(arg==3){ var miurl=urlraiz+"/form_nueva_clinica"; }
+   if(arg==1){ var miurl=urlraiz+"/Analisis/create"; }
+   if(arg==2){ var miurl=urlraiz+"/"; }
+   if(arg==3){ var miurl=urlraiz+"/"; }
+
+    $.ajax({
+    url: miurl
+    }).done( function(resul) 
+    {
+     $("#capa_formularios").html(resul);
+   
+    }).fail( function() 
+   {
+    $("#capa_formularios").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
+   }) ;
+
+}
+
+  
+  function  editar_analisis(arg){
+
+
+  var urlraiz=$("#url_raiz_proyecto").val();
+  var miurl =urlraiz+"/form_editar_analisis/"+arg+""; 
+  $("#capa_modal").show();
+  $("#capa_formularios").show();
+  var screenTop = $(document).scrollTop();
+  $("#capa_formularios").css('top', screenTop);
+  $("#capa_formularios").html($("#cargador_empresa").html());
+
+    $.ajax({
+    url: miurl
+    }).done( function(resul) 
+    {
+     $("#capa_formularios").html(resul);
+   
+    }).fail( function() 
+   {
+    $("#capa_formularios").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
+   }) ;
+ 
 }

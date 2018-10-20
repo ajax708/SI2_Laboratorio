@@ -40,4 +40,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('quitar_rol/{idusu}/{idrol}', 'UsuariosController@quitar_rol');
     Route::get('form_borrado_usuario/{idusu}', 'UsuariosController@form_borrado_usuario');
     Route::get('borrar_rol/{idrol}', 'UsuariosController@borrar_rol');
+
+    //ANALISIS
+    Route::post('crear_analisis', 'UsuariosController@crear_usuario');
+    Route::get('/listado_analisis', 'AnalisisController@listado_analisis');
+    Route::get('form_nuevo_analisis', 'AnalisisController@form_nuevo_analisis');
+    Route::post('editar_usuario', 'AnalisisController@editar_analisis');
+
+    Route::get('form_nueva_area', 'AreaController@form_nueva_area');
+    Route::get('form_nueva_clinica', 'LaboratorioClinicoController@form_nueva_clinica');
+
+    Route::resources([
+    'Analisis' => 'AnalisisController'
+    
+                    ]);
 });
