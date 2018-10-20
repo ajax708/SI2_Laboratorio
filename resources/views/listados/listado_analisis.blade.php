@@ -44,27 +44,29 @@
 
     <div class="table-responsive" >
 
-	    <table  class="table table-hover table-striped" cellspacing="0" width="100%">
+	    <table  class="table table-hover table-striped text-left" cellspacing="0" width="100%">
 				<thead>
 						<tr>    <th>codigo</th>
-								<th>Rol</th>
+								<th>Clave</th>
 								<th>Nombre</th>
-								<th>Email</th>
-							    <th>Acción</th>
+							    <th>Area</th>
+							    <th>Opciones</th>
 						</tr>
 				</thead>
 	    <tbody>
 
 	    @foreach($analisis as $analis)
-		<tr role="row" class="odd">
-			<td>{{ $analis->id }}</td>
+		<tr  role="row" class="odd" >
+			<td >{{ $analis->id }}</td>
 			
 			<td class="mailbox-messages mailbox-name"><a href="javascript:void(0);"  style="display:block"><i class="fa fa-user"></i>&nbsp;&nbsp;{{ $analis->clave  }}</a></td>
 
+			<td>{{ $analis->nombre }}</td>
+
 			<td>{{ $analis->area->nombre }}</td>
-			<td>
 			
-			<button type="button" class="btn  btn-default btn-xs" onclick="verinfo_usuario({{  $analis->id }})" ><i class="fa fa-fw fa-edit"></i></button>
+			<td>
+			<button type="button" class="btn  btn-default btn-xs" onclick="editar_analisis({{  $analis->id }})" ><i class="fa fa-fw fa-edit"></i></button>
 			<button type="button"  class="btn  btn-danger btn-xs"  onclick="borrado_usuario({{  $analis->id }});"  ><i class="fa fa-fw fa-remove"></i></button>
 			</td>
 		</tr>
@@ -81,9 +83,9 @@
 
 
 
-{{ $usuarios->links() }}
+{{ $analisis->links() }}
 
-@if(count($usuarios)==0)
+@if(count($analisis)==0)
 
 
 <div class="box box-primary col-xs-12">
