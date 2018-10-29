@@ -271,3 +271,29 @@ function borrar_rol(idrol){
    }) ;
  
 }
+
+function  add_valores(arg,flag){
+
+  var urlraiz=$("#url_raiz_proyecto").val();
+
+if (flag) {
+  var miurl =urlraiz+"/form_editar_analisis/"+arg+""; 
+}else{
+  var miurl =urlraiz+"/form_editar_analisis/"+arg+""; 
+}
+  $("#capa_modal").show();
+  $("#capa_formularios").show();
+  var screenTop = $(document).scrollTop();
+  $("#capa_formularios").css('top', screenTop);
+  $("#capa_formularios").html($("#cargador_empresa").html());
+
+    $.ajax({
+    url: miurl
+    }).done( function(resul) 
+    {
+     $("#capa_formularios").html(resul);   
+    }).fail( function() 
+   {
+    $("#capa_formularios").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
+   }) ;
+}

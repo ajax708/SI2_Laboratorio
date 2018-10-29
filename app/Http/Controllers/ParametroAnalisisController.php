@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\ParametroAnalisis;
+use App\Analisis;
+use App\UnidadMedida;
+use App\Libraries\Herramientas;
 use Illuminate\Http\Request;
 
 class ParametroAnalisisController extends Controller
@@ -12,9 +15,12 @@ class ParametroAnalisisController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Analisis $analisis)
     {
-        //
+        $parametros = ParametroAnalisis::where('analisis_id',$analisis->id)->get();
+        $unidades = UnidadMedida::all();
+        //$enums = Herramientas::getEnumValues('parametros_analisis','tipo') ;
+         return view("parametroanalisis.index")->with(["parametros" => $parametros, "analisis"=>$analisis,"unidades" =>$unidades]);
     }
 
     /**
@@ -35,7 +41,9 @@ class ParametroAnalisisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       // Analisis $analisis = $request->analisis_id;
+        $parametro = ParametroAnalisis::create($request->only('nombre','tipo','cant_resultados','unidad_medida_id','analisis_id'));
+        return redirect()->route('parametroanalisis.index',['analisis'=>$request->analisis_id]);
     }
 
     /**

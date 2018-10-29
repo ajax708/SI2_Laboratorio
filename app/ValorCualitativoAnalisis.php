@@ -10,4 +10,5 @@ class ValorCualitativoAnalisis extends Model
     protected $table ='valores_cualitativos_analisis';
     public function parametro(){
     	return $this->belongsTo('App\ParametroAnalisis');
+    }
 }
