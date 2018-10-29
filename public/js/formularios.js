@@ -271,3 +271,28 @@ function borrar_rol(idrol){
    }) ;
  
 }
+
+function cargar_formularios(ruta){
+   var urlraiz=$("#url_raiz_proyecto").val();
+   $("#capa_modal").show();
+   $("#capa_formularios").show();
+   var screenTop = $(document).scrollTop();
+   $("#capa_formularios").css('top', screenTop);
+   $("#capa_formularios").html($("#cargador_empresa").html());
+   // if(arg==1){ var miurl=urlraiz+"/form_nuevo_analisis"; }
+   // if(arg==2){ var miurl=urlraiz+"/form_nueva_area"; }
+   // if(arg==3){ var miurl=urlraiz+"/form_nueva_clinica"; }
+   var miurl=urlraiz+ruta; 
+
+    $.ajax({
+    url: miurl
+    }).done( function(resul) 
+    {
+     $("#capa_formularios").html(resul);
+   
+    }).fail( function() 
+   {
+    $("#capa_formularios").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
+   }) ;
+
+}

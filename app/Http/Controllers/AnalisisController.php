@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Analisis;
 use App\Area;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AnalisisController extends Controller
 {
@@ -42,11 +43,11 @@ class AnalisisController extends Controller
     {
         //crea un nuevo usuario en el sistema
 
-        $reglas=[  'password' => 'required|min:8',
-                     'email' => 'required|email|unique:users', ];
+        $reglas=[  'nombre' => 'required',
+                    'clave' => 'required', 
+                    'area' => 'required',];
          
-        $mensajes=[  'password.min' => 'El password debe tener al menos 8 caracteres',
-                     'email.unique' => 'El email ya se encuentra registrado en la base de datos', ];
+        $mensajes=['nombre.unique' => 'El analisis ya se encuentra registrado en la base de datos', ];
           
         $validator = Validator::make( $request->all(),$reglas,$mensajes );
         if( $validator->fails() ){ 
@@ -54,20 +55,19 @@ class AnalisisController extends Controller
                                                 ->withErrors($validator->errors());         
         }
 
-        $usuario=new User;
-        $usuario->name=strtoupper( $request->input("nombres")." ".$request->input("apellidos") ) ;
-        $usuario->nombres=strtoupper( $request->input("nombres") ) ;
-        $usuario->apellidos=strtoupper( $request->input("apellidos") ) ;
-        $usuario->telefono=$request->input("telefono");
-        $usuario->email=$request->input("email");
-        $usuario->password= bcrypt( $request->input("password") ); 
-     
+        $analisis=new Analisis;
+        $analisis->nombre=strtoupper( $request->input("nombre") ) ;
+        $analisis->area_id=$request->input("area");
+        $analisis->clave=$request->input("clave");
+        
+        
             
-        if($usuario->save())
+        if($analisis->save())
         {
-
+            //PENDIENTE A MODIFICAR
       
-          return view("mensajes.msj_usuario_creado")->with("msj","Usuario agregado correctamente") ;
+          return view("mensajes.msj_creado")->with("msj","Analisis agregado correctamente")
+                                            ->with("clase","Analisis") ;
         }
         else
         {

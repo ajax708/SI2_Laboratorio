@@ -16,28 +16,23 @@
 				<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"> 
 
           <div class="col-md-8 ">
-                  <div class="form-group">
-                    <label class="col-sm-2" for="nombre">ID*</label>
-                    <div class="col-sm-10" >
-                      <input type="text" class="form-control" id="nombres" name="nombres"  required   >
-                    </div>
-                  </div>  
+                   
                   <div class="form-group">
                     <label class="col-sm-2" for="nombre">Clave*</label>
                       <div class="col-sm-10" >
-                        <input type="text" class="form-control" id="nombres" name="nombres"  required   >
+                        <input type="text" class="form-control" id="clave" name="clave"  required   >
                       </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-2" for="nombre">Nombre*</label>
                       <div class="col-sm-10" >
-                        <input type="text" class="form-control" id="nombres" name="nombres"  required   >
+                        <input type="text" class="form-control" id="nombre" name="nombre"  required   >
                       </div>
                   </div>
                   <div class="form-group">
                     <label class="col-sm-2" for="rol">Area*</label>
                     <div class="col-sm-10" >
-                      <select id="rol_sel" name="rol_sel" class="form-control" required>
+                      <select id="area" name="area" class="form-control" required>
                          @foreach($areas as $area)
                          <option value="{{ $area->id }}">{{ $area->nombre }}</option>
                          @endforeach
