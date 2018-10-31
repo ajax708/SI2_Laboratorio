@@ -52,6 +52,20 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resources([
     'Analisis' => 'AnalisisController'
-    
-                    ]);
+    ]);
+
+    //PARAMETROS ANALISIS
+    Route::get('parametroanalisis/{analisis}', 'ParametroAnalisisController@index')->name('parametroanalisis.index');
+
+    Route::resource('parametroanalisis', 'ParametroAnalisisController')->except([
+    'index'
+    ]);
+    //cualitativo
+    //cuantitativo
+    Route::get('cuantitativoanalisis/{parametro}', 'ValorCuantitativoAnalisisController@index')->name('cuantitativoanalisis.index');
+
+    Route::resource('cuantitativoanalisis', 'ValorCuantitativoAnalisisController')->except([
+    'index'
+    ]);
+    //medida
 });

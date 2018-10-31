@@ -1,17 +1,13 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-	{{ trans('adminlte_lang::message.home') }}
+	  {{ trans('adminlte_lang::message.home') }} 
 @endsection
-
-
 
 @section('main-content')
 
 
 <section  id="contenido_principal">
-
-	
 
 <div class="box box-primary box-gris">
 
@@ -67,6 +63,8 @@
 			
 			<td>
 			<button type="button" class="btn  btn-default btn-xs" onclick="editar_analisis({{  $analis->id }})" ><i class="fa fa-fw fa-edit"></i></button>
+			<a href="{{route('parametroanalisis.index', ['analisis' => $analis->id])}}"><button type="button" class="btn  btn-default btn-xs" ><i class="fa fa-fw fa-wrench"></i></button>	</a>
+			
 			<button type="button"  class="btn  btn-danger btn-xs"  onclick="borrado_usuario({{  $analis->id }});"  ><i class="fa fa-fw fa-remove"></i></button>
 			</td>
 		</tr>
